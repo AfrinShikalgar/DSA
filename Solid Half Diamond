@@ -1,0 +1,47 @@
+Enter no of rows - 8
+*
+**
+***
+****
+*****
+******
+*******
+********
+*******
+******
+*****
+****
+***
+**
+*
+
+
+
+
+
+#include <iostream>
+using namespace std;
+int main() {
+    int n;
+    cout<<"Enter no of rows - ";
+    cin>>n;
+    int k = n;
+    int cond = 0;
+     int i=1;
+    
+    for(int row=0;row<2*n-1;row++){
+       if(row < n){
+           cond = row+1;
+       }
+       else{
+           cond = k-i;
+           i++;
+       }
+       for(int col=0;col<cond;col++){
+           cout<<"*";
+       }
+       cout<<endl;
+    }
+ 
+    return 0;
+}
