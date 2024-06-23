@@ -1,0 +1,31 @@
+Enter number of rows - 6
+123456
+2   6
+3  6
+4 6
+56
+6
+
+/***************************************/
+
+
+#include <iostream>
+using namespace std;
+
+int main() {
+   int n;
+   cout<<"Enter number of rows - ";
+   cin>>n;
+   for(int row=0;row<n;row++){
+      for(int col=row;col<n;col++){
+          if(col==row || col==n-1|| row==0){
+               cout<<col+1;
+          }else{
+              cout<<" ";
+          }
+        
+      }
+       cout<<endl;
+   }
+    return 0;
+}
