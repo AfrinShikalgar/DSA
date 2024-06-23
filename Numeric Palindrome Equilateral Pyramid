@@ -1,0 +1,44 @@
+
+Enter no of rows - 5
+    1
+   121
+  12321
+ 1234321
+123454321
+
+
+/-------------------------------------------/
+
+
+
+#include <iostream>
+using namespace std;
+int main() {
+    int n;
+    cout<<"Enter no of rows - ";
+    cin>>n;
+    int k = n;
+   
+    
+    for(int row=0;row<n;row++){
+         int count = 0;
+        for(int col=0;col<k;col++){
+           if(col < n-row-1){
+               cout<<" ";
+           }
+           else if(col > n-1){
+              count--;
+              cout<<count;
+           }
+           else{
+               count++;
+               cout<<count;
+           }
+        }
+        k++;
+        cout<<endl;
+         
+    }
+ 
+    return 0;
+}
