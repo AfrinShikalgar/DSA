@@ -1,0 +1,48 @@
+You are given three arrays sorted in increasing order. Find the elements that are common in all three arrays.
+If there are no such elements return an empty array. In this case, the output will be -1.
+
+Note: can you handle the duplicates without using any additional Data Structure?
+
+Examples :
+
+Input: arr1 = [1, 5, 10, 20, 40, 80] , arr2 = [6, 7, 20, 80, 100] , arr3 = [3, 4, 15, 20, 30, 70, 80, 120]
+Output: [20, 80]
+Explanation: 20 and 80 are the only common elements in arr, brr and crr.
+
+--------------------------------------------------------------
+SOLUTION - 
+
+
+vector<int> commonElements(vector<int> &arr1, vector<int> &arr2,
+                               vector<int> &arr3) {
+        int i1=0;
+        int i2=0;
+        int i3=0;
+        
+        vector<int> ans;
+        while(i1 < arr1.size() && i2<arr2.size() && i3<arr3.size()){
+              if(arr1[i1] == arr2[i2] && arr2[i2]==arr3[i3]){
+                  if(ans.empty()){
+                      ans.push_back(arr1[i1]);
+                  }
+                  else if(arr1[i1] != ans.back()){
+                      ans.push_back(arr1[i1]);
+                  }
+                  i1++;
+                  i2++;
+                  i3++;
+              }
+              else if(arr1[i1] > arr2[i2]){
+                  i2++;
+              }
+              else if(arr2[i2] > arr3[i3]){
+                  i3++;
+              }else{
+                  i1++;
+              }
+        }
+        
+        if(ans.empty()) ans.push_back(-1);
+        return ans;
+        // Code Here
+    }
