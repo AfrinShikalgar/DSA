@@ -1,0 +1,80 @@
+Sum of two numbers represented as arrays
+Difficulty: EasyAccuracy: 23.89%Submissions: 24K+Points: 2
+Given two numbers represented by two different arrays A and B. The task is to find the sum array. The sum array is an array representation of addition of two input arrays.
+
+Example 1:
+
+Input:
+N = 3, M = 3
+A[] = {5, 6, 3}
+B[] = {8, 4, 2}
+Output: 1 4 0 5
+Explanation: As 563 + 842 = 1405.
+Example 2:
+
+Input:
+N = 6, M = 4 
+A[] = {2, 2, 7, 5, 3, 3}
+B[] = {4, 3, 3, 8}
+Output: 2 3 1 8 7 1
+Explanation: As 227533 + 4338 = 231871.
+
+
+SOLUTION - 
+
+class Solution{
+public:	
+	
+	vector<int> findSum(vector<int> &a, vector<int> &b) {
+	    // code here
+	    int m = a.size() - 1;
+	    int n = b.size() - 1;
+	    int digit = 0;
+	    int carry = 0;
+	    int total = 0;
+	    vector<int> ans;
+	    
+	    while(m >= 0 && n >= 0){
+	        total = a[m] + b[n] + carry;
+	        digit = total % 10;
+	        ans.push_back(digit);
+	        carry = total / 10;
+	        m--;
+	        n--;
+	    }
+	    
+	    while(m >= 0 ){
+	        if(carry){
+	            total = a[m] + carry;
+	            digit = total % 10;
+	            ans.push_back(digit);
+	            carry = total / 10;
+	        }
+	        else{
+	            ans.push_back(a[m]);
+	        }
+	        m--;
+	    }
+	    
+	     
+	    while(n >= 0 ){
+	        if(carry){
+	            total = b[n] + carry;
+	            digit = total % 10;
+	            ans.push_back(digit);
+	            carry = total / 10;
+	        }
+	        else{
+	            ans.push_back(b[n]);
+	        }
+	        n--;
+	    }
+	    
+	    if(carry) ans.push_back(carry);
+	    
+	   reverse(ans.begin(),ans.end());
+	    
+	   return ans;
+	}
+
+};
