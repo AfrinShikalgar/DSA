@@ -1,0 +1,50 @@
+Given a string s, return the longest 
+palindromic
+ 
+substring
+ in s.
+
+ 
+
+Example 1:
+
+Input: s = "babad"
+Output: "bab"
+Explanation: "aba" is also a valid answer.
+Example 2:
+
+Input: s = "cbbd"
+Output: "bb"
+
+-----------------------------------------
+SOLUTION -
+TC - O(n^2)
+
+
+class Solution {
+public:
+
+    string ans = "";
+    string max_ans = "";
+   string check(string s,int i,int j){
+   
+    while(i>=0 && j<s.size() &&s[i]==s[j]){
+        ans = s.substr(i,j-i+1);
+        if(ans.size() > max_ans.size()){
+            max_ans = ans;
+        }
+        i--;
+        j++;
+    }
+    return max_ans;
+   }
+    string longestPalindrome(string s) {
+        string answer = "";
+        for(int center=0;center<s.size();center++){
+            answer = check(s,center,center);
+            answer = check(s,center,center+1);
+        }
+
+        return answer;
+    }
+};
