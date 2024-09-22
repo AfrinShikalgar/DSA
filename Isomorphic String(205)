@@ -52,3 +52,33 @@ public:
         return true;
     }
 };
+
+-----------------------------------------------------------------------
+class Solution {
+public:
+    bool isIsomorphic(string s, string t) {
+       unordered_map<char,char>mS2T;
+       unordered_map<char,char>mT2S;
+
+       for(int i=0;i<s.size();i++){
+          char charS = s[i];
+          char charT = t[i];
+         if(mS2T.find(charS) != mS2T.end()){
+            if(mS2T[charS] != charT){
+                return false;
+            }
+         }
+
+         if(mT2S.find(charT) != mS2T.end()){
+            if(mT2S[charT] != charS){
+                return false;
+            }
+         }
+
+         mS2T[charS] = charT;
+         mT2S[charT] = charS;
+       }
+
+       return true;
+    }
+};
